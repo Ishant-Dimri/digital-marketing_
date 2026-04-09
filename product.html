@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Detail – RoyalTime</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+<body>
+<div id="loader"><div class="loader-ring"></div></div><nav>
+  <a class="nav-logo" href="index.html">Royal<span>Time</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="cart.html" class="cart-link">Cart <span class="cart-count" style="display:none">0</span></a></li>
+  </ul>
+  <div class="hamburger"><span></span><span></span><span></span></div>
+</nav>
+<section style="padding:20px 6% 0;">
+  <!-- breadcrumb injected by JS via pd- ids fallback -->
+</section>
+<section class="product-detail">
+  <div class="product-gallery">
+    <div class="main-img">
+      <img id="pd-main-img" src="" alt="Watch">
+    </div>
+    <div class="thumbs">
+      <div class="thumb active"><img src="" alt="View 1"></div>
+      <div class="thumb"><img src="" alt="View 2"></div>
+      <div class="thumb"><img src="" alt="View 3"></div>
+    </div>
+  </div>
+  <div class="product-info">
+    <p class="breadcrumb"><a href="shop.html">Shop</a> › <span id="pd-category">-</span></p>
+    <p class="brand-tag" id="pd-category2">— RoyalTime</p>
+    <h1 id="pd-name">Loading…</h1>
+    <div class="product-price" id="pd-price">-</div>
+    <p class="product-description" id="pd-desc">-</p>
+    <div class="specs-grid">
+      <div class="spec-item"><label>Case Material</label><span id="pd-material">-</span></div>
+      <div class="spec-item"><label>Movement</label><span id="pd-movement">-</span></div>
+      <div class="spec-item"><label>Water Resistance</label><span id="pd-water">-</span></div>
+      <div class="spec-item"><label>Crystal</label><span id="pd-crystal">-</span></div>
+    </div>
+    <div class="qty-control">
+      <span style="font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:#D4AF37;">Quantity</span>
+      <button class="qty-btn" id="qty-dec">−</button>
+      <span class="qty-display" id="qty-display">1</span>
+      <button class="qty-btn" id="qty-inc">+</button>
+    </div>
+    <div class="product-action">
+      <button class="btn btn-gold" id="pd-add-cart">Add to Cart</button>
+      <a href="cart.html" class="btn btn-outline">View Cart</a>
+    </div>
+  </div>
+</section>
+
+<section class="featured" style="padding:60px 6%;">
+  <div class="section-header">
+    <h2>You May Also Like</h2>
+    <div class="gold-line"></div>
+  </div>
+  <div class="watches-grid" id="related-grid"></div>
+</section>
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a class="nav-logo" href="index.html">Royal<span>Time</span></a>
+      <p>Crafting extraordinary timepieces for those who demand nothing less than perfection. Every second, a statement.</p>
+      <div class="social-links">
+        <a href="#" title="Instagram">&#x25A1;</a>
+        <a href="#" title="Twitter">&#x25A1;</a>
+        <a href="#" title="Facebook">&#x25A1;</a>
+        <a href="#" title="YouTube">&#x25A1;</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Collections</h4>
+      <ul>
+        <li><a href="shop.html">Luxury Series</a></li>
+        <li><a href="shop.html">Sport Edition</a></li>
+        <li><a href="shop.html">Dress Collection</a></li>
+        <li><a href="shop.html">GMT Masters</a></li>
+        <li><a href="shop.html">Limited Editions</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">Our Story</a></li>
+        <li><a href="about.html">Craftsmanship</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Returns</a></li>
+        <li><a href="#">Warranty</a></li>
+        <li><a href="#">Size Guide</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 RoyalTime. All rights reserved.</p>
+    <p>Designed with elegance &amp; precision.</p>
+  </div>
+</footer>
+<div id="toast" class="toast"></div>
+<script src="script.js"></script></body></html>
