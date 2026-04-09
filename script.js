@@ -333,3 +333,49 @@ document.getElementById("checkout-form").addEventListener("submit", function(e) 
   // Clear cart
   localStorage.removeItem("cart");
 });
+function loadCart() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartBody = document.getElementById("cart-body");
+
+  if (!cartBody) return;
+
+  cartBody.innerHTML = "";
+
+  if (cart.length === 0) {
+    document.getElementById("cart-empty").style.display = "block";
+    return;
+  }
+
+  let subtotal = 0;
+
+  cart.forEach((item, index) => {
+    subtotal += item.price;
+
+    const row = `
+      <tr>
+        <td>${item.name}</td>
+        <td>$${item.price}</td>
+        <td>1</td>
+        <td>$${item.price}</td>
+        <td><button onclick="removeItem(${index})">X</button></td>
+      </tr>
+    `;
+
+    cartBody.innerHTML += row;
+  });
+
+  // UPDATE TOTALS
+  document.getElementById("cart-subtotal").innerText = "$" + subtotal;
+
+  const shipping = subtotal > 5000 ? 0 : 50;
+  document.getElementById("cart-shipping").innerText = "$" + shipping;
+
+  document.getElementById("cart-total").innerText = "$" + (subtotal + shipping);
+}
+function removeItem(index) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  loadCart();
+}
+window.onload = loadCart;
