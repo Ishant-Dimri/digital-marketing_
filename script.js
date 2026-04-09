@@ -291,3 +291,45 @@ document.addEventListener('DOMContentLoaded', () => {
   if (p === 'contact.html') initContact();
   if (p === 'index.html' || p === '') renderCards(WATCHES.slice(0,6), 'featured-grid');
 });
+function openCheckoutForm() {
+  document.getElementById("checkout-form-modal").style.display = "flex";
+}
+
+function closeCheckoutForm() {
+  document.getElementById("checkout-form-modal").style.display = "none";
+}
+
+// Handle form submission
+document.getElementById("checkout-form").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("cust-name").value;
+  const email = document.getElementById("cust-email").value;
+  const phone = document.getElementById("cust-phone").value;
+  const address = document.getElementById("cust-address").value;
+
+  if (!name || !email || !phone || !address) {
+    alert("Please fill all details");
+    return;
+  }
+
+  // OPTIONAL: Save order details locally
+  const orderData = {
+    name,
+    email,
+    phone,
+    address,
+    cart: JSON.parse(localStorage.getItem("cart")) || []
+  };
+
+  localStorage.setItem("lastOrder", JSON.stringify(orderData));
+
+  // Close form
+  closeCheckoutForm();
+
+  // Show success modal
+  document.getElementById("checkout-modal").style.display = "flex";
+
+  // Clear cart
+  localStorage.removeItem("cart");
+});
