@@ -378,4 +378,10 @@ function removeItem(index) {
   localStorage.setItem("cart", JSON.stringify(cart));
   loadCart();
 }
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function addToCart(product) {
+  cart.push(product);
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
 window.onload = loadCart;
