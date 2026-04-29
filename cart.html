@@ -64,6 +64,26 @@
 <div class="success-modal" id="checkout-modal">
   <div class="success-modal-box">
     <div class="success-icon">✨</div>
+    <button class="btn checkout-btn" onclick="openCheckoutForm()">Proceed to Checkout</button>
+
+<div id="checkout-details-modal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeCheckoutForm()">&times;</span>
+    <h2 style="margin-bottom: 20px;">Shipping Details</h2>
+    <p style="margin-bottom: 20px; color: #666;">Please enter your details to complete your RoyalTime order.</p>
+    
+    <form id="shipping-form" style="display: flex; flex-direction: column; gap: 15px;">
+      <input type="text" id="userName" placeholder="Full Name" required style="padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+      <input type="email" id="userEmail" placeholder="Email Address" required style="padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+      <input type="text" id="userCity" placeholder="City / Location" required style="padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+      <textarea id="userAddress" placeholder="Full Shipping Address" rows="3" required style="padding: 10px; border: 1px solid #ddd; border-radius: 4px; resize: none;"></textarea>
+      
+      <button type="submit" class="btn" style="margin-top: 10px;">Place Order</button>
+    </form>
+  </div>
+</div>
+
+<div id="checkout-modal" class="modal">...</div>
     <h2>Order Confirmed!</h2>
     <p>Thank you for choosing RoyalTime. Your timepiece will be prepared with the utmost care and dispatched within 3–5 business days.</p>
     <button class="btn btn-gold" onclick="closeModal()">Continue Shopping</button>
