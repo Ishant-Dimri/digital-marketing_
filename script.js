@@ -385,3 +385,58 @@ function addToCart(product) {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 window.onload = loadCart;
+// script.js
+
+// Initialize cart from localStorage
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+// Update cart count in navbar
+function updateCartCount() {
+  const countEl = document.getElementById('cart-count');
+  if (countEl) {
+    countEl.textContent = cart.length;
+  }
+}
+
+// Add item to cart
+function addToCart(productName, price) {
+  cart.push({ name: productName, price: price });
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCartCount();
+  alert(productName + " added to cart!");
+}
+
+// Remove item from cart
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  localStorage.setItem('cart', JSON.stringify(cart));
+  renderCartItems();
+  updateCartCount();
+}
+
+// Render cart items (for cart.html)
+function renderCartItems() {
+  const itemsList = document.getElementById('cart-items');
+  if (!itemsList) return;
+
+  itemsList.innerHTML = '';
+  cart.forEach((item, index) => {
+    itemsList.innerHTML += `
+      <li>
+        ${item.name} - $${item.price}
+        <button onclick="removeFromCart(${index})">Remove</button>
+      </li>
+    `;
+  });
+}
+
+// Checkout
+function checkout() {
+  alert("Proceeding to checkout with " + cart.length + " item(s).");
+}
+
+// Run on page load
+document.addEventListener('DOMContentLoaded', () => {
+  updateCartCount();
+  renderCartItems();
+});
