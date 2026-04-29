@@ -258,19 +258,59 @@ function removeItem(id) {
   renderCart();
 }
 
-function checkout() {
-  const modal = document.getElementById('checkout-modal');
-  if (modal) modal.classList.add('show');
-  saveCart([]);
-  updateCartCount();
+/* ===== CHECKOUT DETAILS FORM ===== */
+function openCheckoutForm() {
+  const formModal = document.getElementById('checkout-details-modal');
+  if (formModal) formModal.classList.add('show');
 }
 
-function closeModal() {
-  const modal = document.getElementById('checkout-modal');
-  if (modal) modal.classList.remove('show');
-  location.href = 'index.html';
+function closeCheckoutForm() {
+  const formModal = document.getElementById('checkout-details-modal');
+  if (formModal) formModal.classList.remove('show');
 }
 
+// Intercept the form submission
+document.addEventListener('DOMContentLoaded', () => {
+  const shippingForm = document.getElementById('shipping-form');
+  if (shippingForm) {
+    shippingForm.addEventListener('submit', (e) => {
+      e.preventDefault(); // Prevent page reload
+      
+      // Capture the user data
+      const userData = {
+        name: document.getElementById('userName').value,
+        email: document.getElementById('userEmail').value,
+        city: document.getElementById('userCity').value,
+        address: document.getElementById('userAddress').value
+      };
+      
+      console.log("Order placed by:", userData);
+
+      // Close the form modal
+      closeCheckoutForm();
+      
+      // Trigger the final checkout success process
+      checkout(); 
+      
+      // Clear the form for future use
+      shippingForm.reset();
+    });
+  }
+});
+
+/* ===== FINAL CHECKOUT ===== */ 
+function checkout() { 
+  const modal = document.getElementById('checkout-modal'); 
+  if (modal) modal.classList.add('show'); 
+  saveCart([]); 
+  updateCartCount(); 
+}
+
+function closeModal() { 
+  const modal = document.getElementById('checkout-modal'); 
+  if (modal) modal.classList.remove('show'); 
+  location.href = 'index.html'; 
+}
 /* ===== CONTACT FORM ===== */
 function initContact() {
   const form = document.getElementById('contact-form');
